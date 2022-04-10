@@ -7,11 +7,23 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <div id="grid-container">
+    <div id="gridContainer">
 
     </div>
     <script>
-        
+        let e = document.getElementById("gridContainer");
+
+        for (let i = 0; i < 16; i++) {
+            let row = document.createElement('div');
+            row.style = 'display: flex; flex-wrap: wrap'
+            for (let j = 0; j < 16; j++) {
+                let column = document.createElement('div');
+                column.style = 'height: 2vw; width: 2vw; border: 1px solid black';
+                row.appendChild(column);
+            }
+            e.appendChild(row);
+        }
+
     </script>
 </body>
 </html>
