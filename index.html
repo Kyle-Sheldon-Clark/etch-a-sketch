@@ -19,10 +19,19 @@
             for (let j = 0; j < 16; j++) {
                 let column = document.createElement('div');
                 column.style = 'height: 2vw; width: 2vw; border: 1px solid black';
+                column.classList.add('column');
                 row.appendChild(column);
             }
             e.appendChild(row);
+        
         }
+        let cool = document.querySelectorAll('.column');
+        cool.forEach(square => {
+            square.addEventListener('mouseover', () => {
+                square.setAttribute('style', 'background-color: red; height: 2vw; width: 2vw; border: 1px solid black');
+            });
+        });
+        
 
     </script>
 </body>
