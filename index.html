@@ -13,6 +13,7 @@
     <button onclick="changeGridSize()">Change Grid Size</button>
     <button onclick="resetGrid(16)">Reset Grid</button>
     <script>
+        let hue = 0;
 
         function createGrid(size) {
             let container = document.getElementById("gridContainer");
@@ -26,10 +27,8 @@
                     column.classList.add('column');
                     row.appendChild(column);
                     column.addEventListener('mouseover', () => {
-                        let redValue = Math.round(Math.random()*255);
-                        let blueValue = Math.round(Math.random()*255);
-                        let greenValue = Math.round(Math.random()*255);
-                        column.setAttribute('style', `background-color: rgb(${redValue}, ${blueValue}, ${greenValue}); height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid black;`);
+                        column.setAttribute('style', `background-color: hsl(${hue}, 100%, 50%); height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid hsl(${hue}, 100%, 50%);`);
+                        hue++;
                     });
                 }
                 container.appendChild(row);
