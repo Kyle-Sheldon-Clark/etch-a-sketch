@@ -11,6 +11,7 @@
 
     </div>
     <button onclick="changeGridSize()">Change Grid Size</button>
+    <button onclick="resetGrid(16)">Reset Grid</button>
     <script>
 
         function createGrid(size) {
@@ -25,7 +26,10 @@
                     column.classList.add('column');
                     row.appendChild(column);
                     column.addEventListener('mouseover', () => {
-                        column.setAttribute('style', `background-color: red; height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid black;`);
+                        let redValue = Math.round(Math.random()*255);
+                        let blueValue = Math.round(Math.random()*255);
+                        let greenValue = Math.round(Math.random()*255);
+                        column.setAttribute('style', `background-color: rgb(${redValue}, ${blueValue}, ${greenValue}); height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid black;`);
                     });
                 }
                 container.appendChild(row);
@@ -33,11 +37,12 @@
             }
         }
 
-        function resetGrid() {
+        function resetGrid(size) {
             let grid = document.querySelectorAll('.column');
             grid.forEach(square => {
                 square.remove();
             });
+            createGrid(size);
         }
 
         function changeGridSize() {
@@ -48,8 +53,7 @@
             if (size <= 0) {
                 size = 1;
             }
-            resetGrid();
-            createGrid(size);
+            resetGrid(size);
         }
 
         createGrid(16);
