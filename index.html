@@ -42,6 +42,12 @@
 
         function changeGridSize() {
             let size = prompt('How big would you like the grid?');
+            if (size >= 100) {
+                size = 100;
+            }
+            if (size <= 0) {
+                size = 1;
+            }
             resetGrid();
             createGrid(size);
         }
