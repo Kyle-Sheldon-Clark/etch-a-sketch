@@ -7,7 +7,7 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    <div id="gridContainer">
+    <div id="gridContainer" style="border: 1px solid black; width: 75vh;">
 
     </div>
     <button onclick="changeGridSize()">Change Grid Size</button>
@@ -21,11 +21,11 @@
                 row.style = 'display: flex; flex-wrap: wrap'
                 for (let j = 0; j < size; j++) {
                     let column = document.createElement('div');
-                    column.style = `height: ${75/size}vh; width: ${75/size}vh; border: 1px solid black`;
+                    column.style = `height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid black;`;
                     column.classList.add('column');
                     row.appendChild(column);
                     column.addEventListener('mouseover', () => {
-                        column.setAttribute('style', `background-color: red; height: ${75/size}vh; width: ${75/size}vh; border: 1px solid black`);
+                        column.setAttribute('style', `background-color: red; height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid black;`);
                     });
                 }
                 container.appendChild(row);
