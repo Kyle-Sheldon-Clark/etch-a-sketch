@@ -10,27 +10,36 @@
     <div id="gridContainer">
 
     </div>
+    <button onclick="changeGridSize()">Change Grid Size</button>
     <script>
-        let e = document.getElementById("gridContainer");
 
-        for (let i = 0; i < 16; i++) {
-            let row = document.createElement('div');
-            row.style = 'display: flex; flex-wrap: wrap'
-            for (let j = 0; j < 16; j++) {
-                let column = document.createElement('div');
-                column.style = 'height: 2vw; width: 2vw; border: 1px solid black';
-                column.classList.add('column');
-                row.appendChild(column);
+        function createGrid(size) {
+            let container = document.getElementById("gridContainer");
+
+            for (let i = 0; i < size; i++) {
+                let row = document.createElement('div');
+                row.style = 'display: flex; flex-wrap: wrap'
+                for (let j = 0; j < size; j++) {
+                    let column = document.createElement('div');
+                    column.style = `height: ${75/size}vh; width: ${75/size}vh; border: 1px solid black`;
+                    column.classList.add('column');
+                    row.appendChild(column);
+                    column.addEventListener('mouseover', () => {
+                        column.setAttribute('style', `background-color: red; height: ${75/size}vh; width: ${75/size}vh; border: 1px solid black`);
+                    });
+                }
+                container.appendChild(row);
+            
             }
-            e.appendChild(row);
-        
         }
-        let cool = document.querySelectorAll('.column');
-        cool.forEach(square => {
-            square.addEventListener('mouseover', () => {
-                square.setAttribute('style', 'background-color: red; height: 2vw; width: 2vw; border: 1px solid black');
-            });
-        });
+
+        function changeGridSize() {
+            let size = prompt('How big would you like the grid?');
+            createGrid(size);
+        }
+
+        createGrid(16);
+
         
 
     </script>
