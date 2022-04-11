@@ -33,8 +33,16 @@
             }
         }
 
+        function resetGrid() {
+            let grid = document.querySelectorAll('.column');
+            grid.forEach(square => {
+                square.remove();
+            });
+        }
+
         function changeGridSize() {
             let size = prompt('How big would you like the grid?');
+            resetGrid();
             createGrid(size);
         }
 
