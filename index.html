@@ -12,11 +12,12 @@
     </div>
     <input type="text" id="input">
     <button onclick="changeGridSize()">Change Grid Size</button>
-    <button onclick="resetGrid(16)">Reset Grid</button>
+    <button onclick="clearGrid()">Clear Grid</button>
     <script>
+        let size = 16;
         let hue = 0;
 
-        function createGrid(size) {
+        function createGrid() {
             let container = document.getElementById("gridContainer");
 
             for (let i = 0; i < size; i++) {
@@ -37,7 +38,7 @@
             }
         }
 
-        function resetGrid(size) {
+        function clearGrid() {
             let grid = document.querySelectorAll('.column');
             grid.forEach(square => {
                 square.remove();
@@ -47,16 +48,16 @@
 
         function changeGridSize() {
             let input = document.getElementById('input');
-            let size = parseInt(input.value);
+            size = parseInt(input.value);
             if (size >= 100) {
                 size = 100;
             }
             if (size <= 0) {
                 size = 1;
             }
-            resetGrid(size);
+            clearGrid(size);
         }
-        createGrid(16);
+        createGrid();
 
         
 
