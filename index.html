@@ -10,12 +10,17 @@
     <div id="gridContainer" style="border: 1px solid black; width: 75vh;">
 
     </div>
+    <input type="range" min="1" max="360" value="1" class="slider" id="hueRange">
+    <button id="gradualHueChange">Gradual Color Change</button>
+    <br>
     <input type="text" id="input">
     <button onclick="changeGridSize()">Change Grid Size</button>
+    <br>
     <button onclick="clearGrid()">Clear Grid</button>
     <script>
         let size = 16;
         let hue = 0;
+        let gradualHueChange = false;
 
         function createGrid() {
             let container = document.getElementById("gridContainer");
@@ -30,7 +35,9 @@
                     row.appendChild(column);
                     column.addEventListener('mouseover', () => {
                         column.setAttribute('style', `background-color: hsl(${hue}, 100%, 50%); height: ${75/size}vh; width: ${75/size}vh; box-sizing: border-box; border: 1px solid hsl(${hue}, 100%, 50%);`);
-                        hue++;
+                        if (gradualHueChange) {
+                            hue++;
+                        }
                     });
                 }
                 container.appendChild(row);
@@ -58,6 +65,14 @@
             clearGrid(size);
         }
         createGrid();
+        let slider = document.getElementById('hueRange');
+        slider.oninput = function() {
+            hue = this.value;
+            gradualHueChange = false;
+        }
+        document.getElementById('gradualHueChange').addEventListener('click', function() {
+            gradualHueChange = true;
+        });
 
         
 
