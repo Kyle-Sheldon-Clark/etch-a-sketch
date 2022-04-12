@@ -10,6 +10,7 @@
     <div id="gridContainer" style="border: 1px solid black; width: 75vh;">
 
     </div>
+    <input type="text" id="input">
     <button onclick="changeGridSize()">Change Grid Size</button>
     <button onclick="resetGrid(16)">Reset Grid</button>
     <script>
@@ -45,7 +46,8 @@
         }
 
         function changeGridSize() {
-            let size = prompt('How big would you like the grid?');
+            let input = document.getElementById('input');
+            let size = parseInt(input.value);
             if (size >= 100) {
                 size = 100;
             }
@@ -54,7 +56,6 @@
             }
             resetGrid(size);
         }
-
         createGrid(16);
 
         
